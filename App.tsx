@@ -9,11 +9,12 @@ import ContactSection from './components/ContactSection.tsx';
 import Footer from './components/Footer.tsx';
 import PillarPage from './components/PillarPage.tsx';
 import CorporatePortfolio from './components/CorporatePortfolio.tsx';
+import AdminDashboard from './components/AdminDashboard.tsx';
 import { OpuamakubaPattern, PILLARS, BRAND_CONFIG } from './constants.tsx';
 import { PillarData } from './types.ts';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'portfolio' | string>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'portfolio' | 'admin' | string>('home');
   const [activePillar, setActivePillar] = useState<PillarData | null>(null);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ const App: React.FC = () => {
   useEffect(() => {
     if (currentPage === 'portfolio') {
       document.title = 'Corporate Portfolio | SBJ Group Ltd';
+    } else if (currentPage === 'admin') {
+      document.title = 'Admin Dashboard | SBJ Group Ltd';
     } else if (activePillar) {
       document.title = `${activePillar.title} | SBJ Group Ltd`;
     } else {
@@ -35,6 +38,9 @@ const App: React.FC = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash === 'portfolio') {
         setCurrentPage('portfolio');
+        setActivePillar(null);
+      } else if (hash === 'admin') {
+        setCurrentPage('admin');
         setActivePillar(null);
       } else {
         const pillar = PILLARS.find(p => p.id === hash);
@@ -67,6 +73,21 @@ const App: React.FC = () => {
     window.location.hash = 'portfolio';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  if (currentPage === 'admin') {
+    return (
+      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden transition-colors duration-500">
+        <Header 
+          onLogoClick={navigateHome} 
+          onNavigate={navigateToPillar} 
+        />
+        <div className="animate-fadeIn">
+          <AdminDashboard />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   if (currentPage === 'portfolio') {
     return (

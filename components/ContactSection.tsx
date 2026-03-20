@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Send, Loader2, CheckCircle2, Building2 } from 'lucide-react';
 import { OpuamakubaPattern } from '../constants.tsx';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db, handleFirestoreError } from '../src/firebase.ts';
 
 const ContactSection: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
@@ -16,27 +18,33 @@ const ContactSection: React.FC = () => {
     e.preventDefault();
     setStatus('sending');
     
-    const targetEmail = 'sbjgroupltd@gmail.com';
-    
-    // Construct the email body for the recipient
-    const body = `Name: ${formData.name}%0D%0A` +
-                 `Client Email: ${formData.email}%0D%0A` +
-                 `Business Pillar: ${formData.subject}%0D%0A%0D%0A` +
-                 `Inquiry Details:%0D%0A${formData.message}`;
-                 
-    const mailtoUrl = `mailto:${targetEmail}?subject=SBJ Group Inquiry: ${encodeURIComponent(formData.subject)} from ${encodeURIComponent(formData.name)}&body=${body}`;
-    
-    // Simulate professional processing delay for server handshake
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Trigger the actual email delivery protocol
-    window.location.href = mailtoUrl;
-    
-    setStatus('success');
-    setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
-    
-    // Reset the form status after 5 seconds
-    setTimeout(() => setStatus('idle'), 5000);
+    try {
+      await addDoc(collection(db, 'inquiries'), {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        status: 'new',
+        createdAt: serverTimestamp()
+      });
+      
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+      
+      // Reset the form status after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error("Error submitting inquiry:", error);
+      // Fallback to mailto if Firestore fails
+      const targetEmail = 'sbjgroupltd@gmail.com';
+      const body = `Name: ${formData.name}%0D%0A` +
+                   `Client Email: ${formData.email}%0D%0A` +
+                   `Business Pillar: ${formData.subject}%0D%0A%0D%0A` +
+                   `Inquiry Details:%0D%0A${formData.message}`;
+      const mailtoUrl = `mailto:${targetEmail}?subject=SBJ Group Inquiry: ${encodeURIComponent(formData.subject)} from ${encodeURIComponent(formData.name)}&body=${body}`;
+      window.location.href = mailtoUrl;
+      setStatus('idle');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, ArrowRight, Home, LayoutDashboard, Globe, Shield, Zap, Sun, Moon } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Home, LayoutDashboard, Globe, Shield, Zap, Sun, Moon, LogIn, LogOut } from 'lucide-react';
 import { PILLARS, OpuamakubaPattern, BRAND_CONFIG, SBJLogo } from '../constants.tsx';
+import { useAuth } from '../src/AuthContext.tsx';
 
 interface HeaderProps {
   onLogoClick?: () => void;
@@ -12,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { user, role, signInWithGoogle, logout } = useAuth();
 
   // Toggle Body Scroll Lock for Mobile Menu
   useEffect(() => {
@@ -153,6 +155,16 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
               <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-safety transition-all duration-500 group-hover:w-full"></span>
             </button>
 
+            {role === 'admin' && (
+              <button 
+                onClick={() => handleNavClick('admin')}
+                className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-safety hover:text-white transition-colors"
+              >
+                ADMIN
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-safety transition-all duration-500 group-hover:w-full"></span>
+              </button>
+            )}
+
             <div className="h-6 w-px bg-white/10 mx-2"></div>
 
             <button 
@@ -162,6 +174,26 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
               <span className="relative z-10">Inquire</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 opacity-20"></div>
             </button>
+
+            {user ? (
+              <button 
+                onClick={logout}
+                className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors flex items-center gap-2"
+                title="Sign Out"
+              >
+                <LogOut size={14} />
+                {role === 'admin' ? 'Admin' : 'Sign Out'}
+              </button>
+            ) : (
+              <button 
+                onClick={signInWithGoogle}
+                className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors flex items-center gap-2"
+                title="Admin Sign In"
+              >
+                <LogIn size={14} />
+                Sign In
+              </button>
+            )}
           </nav>
 
           {/* Mobile Toggle Trigger */}
@@ -239,6 +271,33 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
               >
                 CONTACT
               </button>
+
+              {role === 'admin' && (
+                <button 
+                  onClick={() => handleNavClick('admin')}
+                  className="text-2xl font-display font-black uppercase text-left text-safety hover:text-white transition-all"
+                >
+                  ADMIN DASHBOARD
+                </button>
+              )}
+
+              {user ? (
+                <button 
+                  onClick={logout}
+                  className="text-2xl font-display font-black uppercase text-left text-white/60 hover:text-safety transition-all flex items-center gap-4"
+                >
+                  <LogOut size={24} />
+                  {role === 'admin' ? 'ADMIN OUT' : 'SIGN OUT'}
+                </button>
+              ) : (
+                <button 
+                  onClick={signInWithGoogle}
+                  className="text-2xl font-display font-black uppercase text-left text-white/60 hover:text-safety transition-all flex items-center gap-4"
+                >
+                  <LogIn size={24} />
+                  SIGN IN
+                </button>
+              )}
             </nav>
             
             <div className="mt-auto pt-12">
