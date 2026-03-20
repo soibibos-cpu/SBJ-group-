@@ -178,7 +178,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
                 {pillar.focus.map((f, i) => (
                   <div key={i} className="p-10 md:p-12 rounded-[3rem] bg-white/[0.03] backdrop-blur-3xl border border-white/5 hover:border-safety transition-all duration-700 group shadow-industrial">
                     <div className="flex items-center gap-6 mb-8">
-                      <div className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center text-safety group-hover:bg-safety group-hover:text-white transition-all shadow-lg">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full flex items-center justify-center text-safety group-hover:bg-safety group-hover:text-white transition-all shadow-lg">
                         <Target size={24} />
                       </div>
                       <h4 className="text-xl md:text-2xl font-black uppercase text-white tracking-tighter">{f}</h4>
@@ -209,7 +209,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
                     <div key={i} className="group/sub p-6 md:p-8 bg-white/[0.03] border border-white/5 rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.06] hover:border-white/20 transition-all duration-500">
                       <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
                         {sub.logo && (
-                          <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl p-3 flex items-center justify-center flex-shrink-0 group-hover/sub:bg-white/10 transition-colors">
+                          <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-full p-3 flex items-center justify-center flex-shrink-0 group-hover/sub:bg-white/10 transition-colors">
                             <img src={sub.logo} alt={sub.name} className="w-full h-full object-contain pointer-events-none" referrerPolicy="no-referrer" />
                           </div>
                         )}

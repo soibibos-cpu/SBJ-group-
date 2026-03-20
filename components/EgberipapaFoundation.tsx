@@ -95,7 +95,7 @@ export default function EgberipapaFoundation({ onBack }: EgberipapaFoundationPro
               }
             ].map((program, i) => (
               <div key={i} className="p-10 md:p-12 bg-white/[0.03] backdrop-blur-3xl rounded-[2.5rem] md:rounded-[3rem] border border-white/5 hover:border-safety transition-all duration-700 reveal-on-scroll shadow-2xl group text-center flex flex-col items-center">
-                <div className="text-safety group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 mb-8 md:mb-10 p-5 bg-white/5 rounded-3xl">
+                <div className="text-safety group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 mb-8 md:mb-10 p-5 bg-white/5 rounded-full">
                   {program.icon}
                 </div>
                 <h4 className="text-xl md:text-2xl font-display font-black uppercase mb-4 md:mb-6 text-white leading-tight">{program.title}</h4>

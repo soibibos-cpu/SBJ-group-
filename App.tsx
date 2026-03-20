@@ -76,7 +76,7 @@ const App: React.FC = () => {
 
   if (currentPage === 'admin') {
     return (
-      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden transition-colors duration-500">
+      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-x-hidden transition-colors duration-500">
         <Header 
           onLogoClick={navigateHome} 
           onNavigate={navigateToPillar} 
@@ -91,7 +91,7 @@ const App: React.FC = () => {
 
   if (currentPage === 'portfolio') {
     return (
-      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden transition-colors duration-500">
+      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-x-hidden transition-colors duration-500">
         <Header 
           onLogoClick={navigateHome} 
           onNavigate={navigateToPillar} 
@@ -106,7 +106,7 @@ const App: React.FC = () => {
 
   if (activePillar) {
     return (
-      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden transition-colors duration-500">
+      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-x-hidden transition-colors duration-500">
         <Header 
           onLogoClick={navigateHome} 
           onNavigate={navigateToPillar} 
@@ -124,7 +124,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div id="home" className="min-h-screen font-sans selection:bg-safety selection:text-white bg-crude overflow-hidden transition-colors duration-500">
+    <div id="home" className="min-h-screen font-sans selection:bg-safety selection:text-white bg-crude overflow-x-hidden transition-colors duration-500">
       <Header 
         onLogoClick={navigateHome} 
         onNavigate={navigateToPillar} 

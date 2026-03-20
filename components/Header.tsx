@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, ArrowRight, Home, LayoutDashboard, Globe, Shield, Zap, Sun, Moon, LogIn, LogOut } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Home, LayoutDashboard, Globe, Shield, Zap, Sun, Moon } from 'lucide-react';
 import { PILLARS, OpuamakubaPattern, BRAND_CONFIG, SBJLogo } from '../constants.tsx';
 import { useAuth } from '../src/AuthContext.tsx';
 
@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { user, role, signInWithGoogle, logout } = useAuth();
+  const { user, role } = useAuth();
 
   // Toggle Body Scroll Lock for Mobile Menu
   useEffect(() => {
@@ -106,13 +106,13 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
               </button>
               
               <div className="absolute top-full right-1/2 translate-x-1/2 pt-6 w-[700px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                <div className="bg-white dark:bg-navy border border-slate-200 dark:border-white/10 shadow-2xl dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden rounded-sm">
+                <div className="bg-white dark:bg-navy border border-slate-200 dark:border-white/10 shadow-2xl dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden rounded-2xl">
                   <div className="grid grid-cols-2 p-6 gap-2">
                     {PILLARS.map((pillar) => (
                       <button
                         key={pillar.id}
                         onClick={() => handleNavClick(pillar.id)}
-                        className="flex items-start gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 text-left transition-all duration-300 group/item rounded-sm border border-transparent hover:border-slate-200 dark:hover:border-white/10"
+                        className="flex items-start gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 text-left transition-all duration-300 group/item rounded-2xl border border-transparent hover:border-slate-200 dark:hover:border-white/10"
                       >
                         <div className="mt-1 w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-white/5 text-silt group-hover/item:text-safety group-hover/item:scale-110 transition-all duration-500 border border-slate-200 dark:border-white/5">
                           {/* Use any as type parameter for ReactElement to allow icon-specific props like size */}
@@ -169,37 +169,19 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
 
             <button 
               onClick={() => handleNavClick('#contact-section')}
-              className="relative overflow-hidden group bg-safety text-white px-8 py-3.5 text-[10px] font-black tracking-[0.4em] uppercase transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,87,34,0.4)]"
+              className="relative overflow-hidden group bg-safety text-white px-8 py-3.5 text-[10px] font-black tracking-[0.4em] uppercase transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,87,34,0.4)] rounded-full"
             >
               <span className="relative z-10">Inquire</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 opacity-20"></div>
             </button>
 
-            {user ? (
-              <button 
-                onClick={logout}
-                className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors flex items-center gap-2"
-                title="Sign Out"
-              >
-                <LogOut size={14} />
-                {role === 'admin' ? 'Admin' : 'Sign Out'}
-              </button>
-            ) : (
-              <button 
-                onClick={signInWithGoogle}
-                className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors flex items-center gap-2"
-                title="Admin Sign In"
-              >
-                <LogIn size={14} />
-                Sign In
-              </button>
-            )}
+
           </nav>
 
           {/* Mobile Toggle Trigger */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden relative z-[110] w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-sm hover:bg-white/10 transition-all"
+            className="lg:hidden relative z-[110] w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all"
           >
             {isMenuOpen ? <X className="text-white" size={24} /> : <Menu className="text-white" size={24} />}
           </button>
@@ -281,29 +263,13 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
                 </button>
               )}
 
-              {user ? (
-                <button 
-                  onClick={logout}
-                  className="text-2xl font-display font-black uppercase text-left text-white/60 hover:text-safety transition-all flex items-center gap-4"
-                >
-                  <LogOut size={24} />
-                  {role === 'admin' ? 'ADMIN OUT' : 'SIGN OUT'}
-                </button>
-              ) : (
-                <button 
-                  onClick={signInWithGoogle}
-                  className="text-2xl font-display font-black uppercase text-left text-white/60 hover:text-safety transition-all flex items-center gap-4"
-                >
-                  <LogIn size={24} />
-                  SIGN IN
-                </button>
-              )}
+
             </nav>
             
             <div className="mt-auto pt-12">
               <button 
                 onClick={() => handleNavClick('#contact-section')}
-                className="w-full bg-white text-navy py-5 font-black text-xs tracking-[0.5em] uppercase hover:bg-safety hover:text-white transition-all shadow-2xl"
+                className="w-full bg-white text-navy py-5 font-black text-xs tracking-[0.5em] uppercase hover:bg-safety hover:text-white transition-all shadow-2xl rounded-full"
               >
                 Inquiry Portal
               </button>

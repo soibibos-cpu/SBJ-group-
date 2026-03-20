@@ -101,7 +101,7 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {PILLARS.map((pillar, idx) => (
                 <div key={pillar.id} className="p-8 md:p-10 bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[2rem] md:rounded-[2.5rem] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-700 reveal-on-scroll shadow-xl flex flex-col h-full text-center items-center">
-                  <div className="text-safety mb-8 p-4 bg-white/5 rounded-2xl">
+                  <div className="text-safety mb-8 p-4 bg-white/5 rounded-full">
                     {React.cloneElement(pillar.icon as React.ReactElement<any>, { size: 28 })}
                   </div>
                   <h5 className="font-display font-black text-xl md:text-2xl mb-6 uppercase text-white leading-tight">
@@ -109,7 +109,7 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
                   </h5>
                   <div className="flex flex-wrap gap-2 justify-center mt-auto">
                     {pillar.subsidiaries.map((s, i) => (
-                      <span key={i} className="px-3 py-1.5 bg-white/5 text-[9px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-white/60 flex items-center gap-2">
+                      <span key={i} className="px-3 py-1.5 bg-white/5 text-[9px] font-bold uppercase tracking-wider rounded-full border border-white/10 text-white/60 flex items-center gap-2">
                         {s.logo && <img src={s.logo} alt="" className="w-3 h-3 object-contain opacity-70" referrerPolicy="no-referrer" />}
                         {s.name}
                       </span>

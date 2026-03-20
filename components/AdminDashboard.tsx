@@ -132,14 +132,14 @@ const AdminDashboard: React.FC = () => {
                     {inquiry.status === 'new' && (
                       <button 
                         onClick={() => markAsRead(inquiry.id)}
-                        className="flex-1 md:flex-none bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+                        className="flex-1 md:flex-none bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
                       >
                         <CheckCircle size={14} /> Mark Read
                       </button>
                     )}
                     <button 
                       onClick={() => deleteInquiry(inquiry.id)}
-                      className="flex-1 md:flex-none bg-red-500/10 hover:bg-red-500/20 text-red-500 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 md:flex-none bg-red-500/10 hover:bg-red-500/20 text-red-500 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
                     >
                       <Trash2 size={14} /> Delete
                     </button>

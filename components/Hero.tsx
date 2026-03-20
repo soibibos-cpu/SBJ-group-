@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen md:h-screen flex flex-col justify-center items-center overflow-hidden pt-20 bg-crude transition-colors duration-500">
+    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32 bg-crude transition-colors duration-500">
       {/* Immersive Video Background with Parallax */}
       <div 
         className="absolute inset-0 z-0 overflow-hidden bg-black will-change-transform"
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
       
       {/* Content Container: Centered Alignment */}
       <div 
-        className="relative z-10 max-w-7xl mx-auto px-6 text-center will-change-transform py-12 md:py-0"
+        className="relative z-10 max-w-7xl mx-auto px-6 text-center will-change-transform"
         style={{ transform: `translateY(${-scrollY * 0.1}px)` }}
       >
         <div className="flex flex-col items-center">
@@ -74,14 +74,14 @@ const Hero: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 reveal-entry" style={{ animationDelay: '800ms' }}>
             <button 
               onClick={scrollToPillars}
-              className="bg-safety text-white px-8 md:px-12 py-4 md:py-5 font-black text-[10px] md:text-xs tracking-[0.2em] uppercase shadow-2xl hover:bg-safety/90 transition-all flex items-center gap-3 group outline-none"
+              className="bg-safety text-white px-8 md:px-12 py-4 md:py-5 font-black text-[10px] md:text-xs tracking-[0.2em] uppercase shadow-2xl hover:bg-safety/90 transition-all flex items-center gap-3 group outline-none rounded-full"
             >
               Explore Our Businesses
               <div className="w-6 h-[1px] bg-white group-hover:w-10 transition-all"></div>
             </button>
             <button 
               onClick={goToPortfolio}
-              className="border border-white/20 backdrop-blur-md text-white px-8 md:px-12 py-4 md:py-5 font-black text-[10px] md:text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all outline-none"
+              className="border border-white/20 backdrop-blur-md text-white px-8 md:px-12 py-4 md:py-5 font-black text-[10px] md:text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all outline-none rounded-full"
             >
               Corporate Portfolio
             </button>

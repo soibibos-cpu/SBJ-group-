@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
                 <a 
                   key={social.label} 
                   href="#" 
-                  className="group flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 hover:bg-safety hover:border-safety transition-all duration-500 rounded-sm"
+                  className="group flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 hover:bg-safety hover:border-safety transition-all duration-500 rounded-full"
                 >
                   <span className="text-white group-hover:scale-110 transition-transform">{social.icon}</span>
                   <span className="text-[10px] font-black uppercase tracking-[0.2em]">{social.label}</span>
@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
                 Headquarters
               </h5>
               <div className="space-y-6">
-                <div className="p-5 bg-white/5 border border-white/5 rounded-sm">
+                <div className="p-5 bg-white/5 border border-white/5 rounded-2xl">
                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest block mb-2">Primary Office</span>
                   <p className="text-xs text-white/70 leading-relaxed uppercase tracking-tight">
                     {BRAND_CONFIG.contact.address}
@@ -175,7 +175,7 @@ const Footer: React.FC = () => {
             <div className="flex flex-col items-center text-center gap-6">
               <div className="flex items-center gap-4">
                 <div className="h-px w-8 bg-white/5"></div>
-                <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-sm">
+                <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full">
                   <span className="text-[9px] font-black tracking-widest text-white/40">NG</span>
                 </div>
                 <div className="h-px w-8 bg-white/5"></div>

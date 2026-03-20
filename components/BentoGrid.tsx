@@ -39,7 +39,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ pillar, index, onClick }) => {
       <div className="relative z-10 h-full p-6 md:p-10 flex flex-col justify-end">
         <div className="transition-all duration-700 transform translate-y-2 group-hover:translate-y-0">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-white/10 backdrop-blur-md text-white border border-white/10 shadow-xl flex items-center justify-center transform group-hover:rotate-6 group-hover:bg-safety group-hover:text-white group-hover:border-safety/50 group-hover:shadow-[0_0_20px_rgba(255,87,34,0.4)] transition-all duration-500 rounded-xl">
+            <div className="p-3 bg-white/10 backdrop-blur-md text-white border border-white/10 shadow-xl flex items-center justify-center transform group-hover:rotate-6 group-hover:bg-safety group-hover:text-white group-hover:border-safety/50 group-hover:shadow-[0_0_20px_rgba(255,87,34,0.4)] transition-all duration-500 rounded-full">
               {React.cloneElement(pillar.icon as React.ReactElement<any>, { size: 20 })}
             </div>
           </div>
