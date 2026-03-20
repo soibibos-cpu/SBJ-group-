@@ -13,9 +13,9 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
   }, []);
 
   return (
-    <div className="min-h-screen bg-navy text-white animate-fadeIn">
+    <div className="min-h-screen bg-navy text-white animate-fadeIn transition-colors duration-500">
       {/* Cinematic Portfolio Hero */}
-      <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden brushed-steel pt-24 md:pt-32">
+      <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden pt-24 md:pt-32">
         <div className="absolute inset-0 z-0 opacity-40">
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
@@ -38,14 +38,14 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
             Corporate <span className="text-silt">Portfolio</span>
           </h1>
           
-          <div className="max-w-4xl reveal-entry stagger-2 p-8 md:p-12 bg-white/[0.04] backdrop-blur-2xl rounded-[2rem] md:rounded-[2.5rem] border border-white/10 text-center">
-            <span className="text-safety font-black text-[9px] md:text-[10px] tracking-[0.5em] uppercase block mb-4 md:mb-6">Group Mission</span>
-            <p className="text-xl md:text-3xl text-white font-medium leading-relaxed mb-8 md:mb-10 italic">
+          <div className="max-w-4xl reveal-entry stagger-2 p-10 md:p-16 bg-white/[0.04] backdrop-blur-2xl rounded-[3rem] border border-white/10 text-center shadow-industrial">
+            <span className="text-safety font-black text-[10px] md:text-[11px] tracking-[0.5em] uppercase block mb-6 md:mb-8">Group Mission</span>
+            <p className="text-2xl md:text-4xl text-white font-black leading-tight mb-10 md:mb-12 italic tracking-tighter">
               "{BRAND_CONFIG.mission}"
             </p>
-            <div className="h-px w-24 bg-white/10 mb-8 md:mb-10 mx-auto"></div>
-            <span className="text-silt font-black text-[9px] md:text-[10px] tracking-[0.5em] uppercase block mb-4 md:mb-6">Group Vision</span>
-            <p className="text-lg md:text-2xl text-white/50 font-light leading-relaxed">
+            <div className="h-[2px] w-24 bg-white/10 mb-10 md:mb-12 mx-auto"></div>
+            <span className="text-silt font-black text-[10px] md:text-[11px] tracking-[0.5em] uppercase block mb-6 md:mb-8">Group Vision</span>
+            <p className="text-xl md:text-3xl text-white font-bold leading-relaxed tracking-tight">
               "{BRAND_CONFIG.vision}"
             </p>
           </div>
@@ -53,17 +53,17 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
       </section>
 
       {/* Quality Policy Statement */}
-      <section className="py-24 md:py-32 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] grayscale">
+      <section className="py-24 md:py-32 bg-white/5 relative overflow-hidden transition-colors duration-500">
+        <div className="absolute inset-0 opacity-[0.05] grayscale">
            <OpuamakubaPattern />
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex justify-center">
-          <div className="max-w-4xl bg-navy/[0.02] p-10 md:p-20 rounded-[2.5rem] md:rounded-[3rem] border-2 border-navy/5 shadow-2xl relative text-center">
+          <div className="max-w-5xl bg-navy/[0.02] p-12 md:p-24 rounded-[3rem] md:rounded-[4rem] border-2 border-navy/5 shadow-industrial relative text-center">
             <div className="absolute top-0 right-0 p-10 md:p-16 opacity-5">
-              <ShieldCheck size={180} className="text-navy" />
+              <ShieldCheck size={240} className="text-white" />
             </div>
-            <h2 className="text-4xl md:text-6xl font-display font-black tracking-tighter uppercase mb-8 md:mb-12 leading-none text-navy">Quality <span className="text-safety">Mandate</span></h2>
-            <p className="text-xl md:text-3xl font-medium leading-relaxed text-navy/80 italic">
+            <h2 className="text-4xl md:text-7xl font-display font-black tracking-tighter uppercase mb-10 md:mb-16 leading-none text-white">Quality <span className="text-safety">Mandate</span></h2>
+            <p className="text-2xl md:text-4xl font-black leading-tight text-navy/80 italic tracking-tighter">
               "{BRAND_CONFIG.qualityPolicy}"
             </p>
           </div>
@@ -71,7 +71,7 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
       </section>
 
       {/* Corporate Structure - Refactored Grid for Centered Alignment */}
-      <section className="py-24 md:py-40 bg-navy text-white relative overflow-hidden">
+      <section className="py-24 md:py-40 bg-navy text-white relative overflow-hidden transition-colors duration-500">
         <div className="absolute inset-0 opacity-[0.05] grayscale">
            <OpuamakubaPattern />
         </div>
@@ -109,7 +109,8 @@ export default function CorporatePortfolio({ onBack }: CorporatePortfolioProps) 
                   </h5>
                   <div className="flex flex-wrap gap-2 justify-center mt-auto">
                     {pillar.subsidiaries.map((s, i) => (
-                      <span key={i} className="px-3 py-1.5 bg-white/5 text-[9px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-white/60">
+                      <span key={i} className="px-3 py-1.5 bg-white/5 text-[9px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-white/60 flex items-center gap-2">
+                        {s.logo && <img src={s.logo} alt="" className="w-3 h-3 object-contain opacity-70" referrerPolicy="no-referrer" />}
                         {s.name}
                       </span>
                     ))}

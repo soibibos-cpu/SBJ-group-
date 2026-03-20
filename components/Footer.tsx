@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="footer" className="bg-navy relative overflow-hidden text-white scroll-mt-0">
+    <footer id="footer" className="bg-navy relative overflow-hidden text-white scroll-mt-0 transition-colors duration-500">
       {/* Visual Accents */}
       <div className="absolute inset-0 oil-texture opacity-20 pointer-events-none"></div>
       
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 { icon: <Globe size={18} />, label: "Web" }
               ].map((social, i) => (
                 <a 
-                  key={i} 
+                  key={social.label} 
                   href="#" 
                   className="group flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 hover:bg-safety hover:border-safety transition-all duration-500 rounded-sm"
                 >

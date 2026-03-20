@@ -4,6 +4,7 @@ import Header from './components/Header.tsx';
 import Hero from './components/Hero.tsx';
 import BentoGrid from './components/BentoGrid.tsx';
 import SecurityHub from './components/SecurityHub.tsx';
+import SubsidiariesSection from './components/SubsidiariesSection.tsx';
 import ContactSection from './components/ContactSection.tsx';
 import Footer from './components/Footer.tsx';
 import PillarPage from './components/PillarPage.tsx';
@@ -14,6 +15,20 @@ import { PillarData } from './types.ts';
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'portfolio' | string>('home');
   const [activePillar, setActivePillar] = useState<PillarData | null>(null);
+
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
+
+  useEffect(() => {
+    if (currentPage === 'portfolio') {
+      document.title = 'Corporate Portfolio | SBJ Group Ltd';
+    } else if (activePillar) {
+      document.title = `${activePillar.title} | SBJ Group Ltd`;
+    } else {
+      document.title = 'SBJ Group Ltd | Industrial Excellence in the Gulf of Guinea';
+    }
+  }, [currentPage, activePillar]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -55,8 +70,11 @@ const App: React.FC = () => {
 
   if (currentPage === 'portfolio') {
     return (
-      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden">
-        <Header onLogoClick={navigateHome} onNavigate={navigateToPillar} />
+      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden transition-colors duration-500">
+        <Header 
+          onLogoClick={navigateHome} 
+          onNavigate={navigateToPillar} 
+        />
         <div className="animate-fadeIn">
           <CorporatePortfolio onBack={navigateHome} />
         </div>
@@ -67,8 +85,11 @@ const App: React.FC = () => {
 
   if (activePillar) {
     return (
-      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden">
-        <Header onLogoClick={navigateHome} onNavigate={navigateToPillar} />
+      <div className="min-h-screen font-sans selection:bg-safety selection:text-white bg-navy overflow-hidden transition-colors duration-500">
+        <Header 
+          onLogoClick={navigateHome} 
+          onNavigate={navigateToPillar} 
+        />
         <div className="animate-fadeIn">
           <PillarPage 
             pillar={activePillar} 
@@ -82,36 +103,39 @@ const App: React.FC = () => {
   }
 
   return (
-    <div id="home" className="min-h-screen font-sans selection:bg-safety selection:text-white bg-crude overflow-hidden">
-      <Header onLogoClick={navigateHome} onNavigate={navigateToPillar} />
+    <div id="home" className="min-h-screen font-sans selection:bg-safety selection:text-white bg-crude overflow-hidden transition-colors duration-500">
+      <Header 
+        onLogoClick={navigateHome} 
+        onNavigate={navigateToPillar} 
+      />
       
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 oil-texture opacity-20"></div>
-        <div className="absolute inset-0 oil-texture opacity-10 rotate-12 scale-125"></div>
+        <div className="absolute inset-0 oil-texture opacity-5 dark:opacity-20"></div>
+        <div className="absolute inset-0 oil-texture opacity-5 dark:opacity-10 rotate-12 scale-125"></div>
       </div>
 
       <main className="relative z-10 animate-fadeIn">
         <Hero />
         
         {/* Corporate Purpose - Centered Layout */}
-        <section className="py-40 bg-navy relative overflow-hidden">
+        <section className="py-40 bg-navy relative overflow-hidden transition-colors duration-500">
           <div className="absolute inset-0 z-0">
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-safety/10 rounded-full blur-[120px] animate-pulse"></div>
           </div>
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto bg-white/[0.03] backdrop-blur-3xl p-12 md:p-20 border border-white/10 rounded-[3rem] shadow-2xl relative reveal-on-scroll text-center">
+            <div className="max-w-4xl mx-auto bg-white/[0.03] backdrop-blur-3xl p-12 md:p-20 border border-white/10 rounded-[3rem] shadow-industrial relative reveal-on-scroll text-center">
               <div className="absolute top-0 right-0 p-10 opacity-5">
                 <OpuamakubaPattern />
               </div>
               <div className="w-16 h-1 bg-safety mb-12 mx-auto"></div>
-              <h3 className="text-white font-display font-black text-4xl md:text-6xl mb-10 tracking-tighter uppercase leading-none">Delivering Industrial Excellence</h3>
-              <p className="text-white/60 text-xl leading-relaxed mb-16 font-light">
+              <h3 className="text-white font-display font-black text-4xl md:text-6xl mb-10 tracking-tighter uppercase leading-tight">Delivering Industrial Excellence</h3>
+              <p className="text-white/90 text-xl leading-relaxed mb-16 font-medium">
                 SBJ Group is a diversified and fully integrated industrial conglomerate. Our strategic approach to energy, infrastructure, and security serves as a foundation for sustainable development across the Gulf of Guinea.
               </p>
               <div className="flex justify-center">
                 <button 
                   onClick={navigateToPortfolio}
-                  className="bg-white/10 hover:bg-safety text-white px-12 py-6 rounded-full font-black text-[10px] tracking-[0.4em] flex items-center gap-4 outline-none group uppercase transition-all shadow-xl"
+                  className="bg-white/10 hover:bg-safety text-white px-12 py-6 rounded-full font-black text-[11px] tracking-[0.4em] flex items-center gap-4 outline-none group uppercase transition-all shadow-xl hover:shadow-safety/20"
                 >
                   OUR CORPORATE LEGACY <span className="transition-transform group-hover:translate-x-3">→</span>
                 </button>
@@ -121,22 +145,22 @@ const App: React.FC = () => {
         </section>
 
         {/* Vision & Mission Section - Symmetrical Grid: Stacked on Mobile, Side-by-Side on Desktop */}
-        <section className="py-40 bg-crude relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <section className="py-40 bg-crude relative overflow-hidden transition-colors duration-500">
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
              <OpuamakubaPattern />
           </div>
           <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            <div className="p-12 md:p-20 bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded-[4rem] reveal-on-scroll stagger-1 flex flex-col items-center text-center">
+            <div className="p-12 md:p-20 bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded-[4rem] reveal-on-scroll stagger-1 flex flex-col items-center text-center shadow-2xl">
               <div className="w-16 h-1 bg-silt mb-12"></div>
-              <h3 className="text-silt font-display font-black uppercase tracking-[0.3em] text-[10px] mb-10">VISION PROTOCOL</h3>
-              <p className="text-2xl md:text-3xl text-white font-light italic leading-tight max-w-lg">
+              <h3 className="text-silt font-display font-black uppercase tracking-[0.3em] text-[11px] mb-10">VISION PROTOCOL</h3>
+              <p className="text-2xl md:text-3xl text-white font-bold italic leading-tight max-w-lg">
                 "{BRAND_CONFIG.vision}"
               </p>
             </div>
-            <div className="p-12 md:p-20 bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded-[4rem] reveal-on-scroll stagger-2 flex flex-col items-center text-center">
+            <div className="p-12 md:p-20 bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded-[4rem] reveal-on-scroll stagger-2 flex flex-col items-center text-center shadow-2xl">
               <div className="w-16 h-1 bg-safety mb-12"></div>
-              <h3 className="text-safety font-display font-black uppercase tracking-[0.3em] text-[10px] mb-10">MISSION OBJECTIVE</h3>
-              <p className="text-2xl md:text-3xl text-white font-light leading-tight max-w-lg">
+              <h3 className="text-safety font-display font-black uppercase tracking-[0.3em] text-[11px] mb-10">MISSION OBJECTIVE</h3>
+              <p className="text-2xl md:text-3xl text-white font-bold leading-tight max-w-lg">
                 "{BRAND_CONFIG.mission}"
               </p>
             </div>
@@ -144,6 +168,7 @@ const App: React.FC = () => {
         </section>
 
         <BentoGrid onPillarClick={navigateToPillar} />
+        <SubsidiariesSection />
         <SecurityHub />
         <ContactSection />
       </main>

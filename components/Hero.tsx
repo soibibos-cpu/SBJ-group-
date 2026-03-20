@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen md:h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
+    <section className="relative min-h-screen md:h-screen flex flex-col justify-center items-center overflow-hidden pt-20 bg-crude transition-colors duration-500">
       {/* Immersive Video Background with Parallax */}
       <div 
         className="absolute inset-0 z-0 overflow-hidden bg-black will-change-transform"
@@ -66,8 +66,8 @@ const Hero: React.FC = () => {
           </h2>
           
           <div className="max-w-3xl mx-auto reveal-entry mb-10" style={{ animationDelay: '600ms' }}>
-            <p className="text-base md:text-lg text-white/70 font-light leading-relaxed">
-              SBJ Upstream Oil & Gas Limited delivers world-class expertise in energy, construction, and procurement, backed by cutting-edge security technologies—protecting vital infrastructure and securing Nigeria’s economic future.
+            <p className="text-base md:text-lg text-white font-light leading-relaxed">
+              SBJ Group Limited delivers world-class expertise in energy, construction, and procurement, backed by cutting-edge security technologies—protecting vital infrastructure and securing Nigeria’s economic future.
             </p>
           </div>
           
@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
         style={{ animationDelay: '1200ms' }}
       >
         <span className="text-[9px] tracking-[0.4em] uppercase font-bold text-white">Scroll</span>
-        <ChevronDown className="w-5 h-5" />
+        <ChevronDown className="w-5 h-5 text-white" />
       </div>
 
       <div 

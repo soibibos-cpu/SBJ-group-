@@ -15,6 +15,7 @@ export enum ServicePillar {
 export interface Subsidiary {
   name: string;
   division?: string;
+  logo?: string;
 }
 
 export interface ExecutiveOfficer {

@@ -108,7 +108,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
   const nextPillar = PILLARS[(PILLARS.findIndex(p => p.id === pillar.id) + 1) % PILLARS.length];
   
   return (
-    <div className="min-h-screen bg-[#000d1a] text-white animate-fadeIn">
+    <div className="min-h-screen bg-[#000d1a] text-white animate-fadeIn transition-colors duration-500">
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden pt-24">
         <div className="absolute inset-0 z-0 bg-navy">
           <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-black opacity-90"></div>
@@ -154,7 +154,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
               ))}
             </h1>
 
-            <p className="text-lg md:text-2xl text-white/50 font-light leading-relaxed border-l-4 border-safety pl-6 md:pl-10 max-w-4xl">
+            <p className="text-xl md:text-3xl text-white font-bold leading-relaxed border-l-8 border-safety pl-6 md:pl-12 max-w-5xl italic tracking-tight">
               {pillar.description}
             </p>
           </div>
@@ -162,7 +162,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
       </section>
 
       {/* Capabilities & Subsidiaries Section */}
-      <section className="py-24 md:py-40 bg-navy relative">
+      <section className="py-24 md:py-40 bg-navy relative transition-colors duration-500">
         <div className="absolute inset-0 opacity-10 grayscale">
           <OpuamakubaPattern />
         </div>
@@ -174,16 +174,16 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
                 Unit Capabilities
               </h2>
               {/* Cards arranged side-by-side in 2 or 3 columns */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 {pillar.focus.map((f, i) => (
-                  <div key={i} className="p-8 md:p-10 rounded-[2rem] bg-white/[0.03] backdrop-blur-3xl border border-white/5 hover:border-safety transition-all duration-700 group shadow-2xl">
-                    <div className="flex items-center gap-4 md:gap-6 mb-4">
-                      <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-xl flex items-center justify-center text-safety group-hover:bg-safety group-hover:text-white transition-all">
-                        <Target size={20} />
+                  <div key={i} className="p-10 md:p-12 rounded-[3rem] bg-white/[0.03] backdrop-blur-3xl border border-white/5 hover:border-safety transition-all duration-700 group shadow-industrial">
+                    <div className="flex items-center gap-6 mb-8">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center text-safety group-hover:bg-safety group-hover:text-white transition-all shadow-lg">
+                        <Target size={24} />
                       </div>
-                      <h4 className="text-lg md:text-xl font-black uppercase text-white">{f}</h4>
+                      <h4 className="text-xl md:text-2xl font-black uppercase text-white tracking-tighter">{f}</h4>
                     </div>
-                    <p className="text-white/40 text-xs md:text-sm leading-relaxed font-medium">Strategic deployment of resources to achieve operational excellence in {f.toLowerCase()}.</p>
+                    <p className="text-white/50 text-sm md:text-base leading-relaxed font-bold">Strategic deployment of resources to achieve operational excellence in {f.toLowerCase()}.</p>
                   </div>
                 ))}
               </div>
@@ -207,7 +207,12 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
                  <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {pillar.subsidiaries.map((sub, i) => (
                     <div key={i} className="group/sub p-6 md:p-8 bg-white/[0.03] border border-white/5 rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.06] hover:border-white/20 transition-all duration-500">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
+                      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                        {sub.logo && (
+                          <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl p-3 flex items-center justify-center flex-shrink-0 group-hover/sub:bg-white/10 transition-colors">
+                            <img src={sub.logo} alt={sub.name} className="w-full h-full object-contain pointer-events-none" referrerPolicy="no-referrer" />
+                          </div>
+                        )}
                         <div className="flex-1">
                           <h4 className="text-xl md:text-2xl font-display font-black mb-1 md:mb-2 uppercase text-white group-hover/sub:text-safety transition-colors tracking-tight">
                             {sub.name}
@@ -223,7 +228,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
                             </div>
                           </div>
                         </div>
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 ml-auto">
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover/sub:text-safety group-hover/sub:border-safety transition-all">
                             <ArrowRight size={20} />
                           </div>
@@ -239,7 +244,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
       </section>
 
       {/* Next Unit Navigation */}
-      <section className="py-20 md:py-24 bg-crude border-t border-white/5 relative overflow-hidden group">
+      <section className="py-20 md:py-24 bg-crude border-t border-white/5 relative overflow-hidden group transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
           <button 
             onClick={() => onNavigate(nextPillar.id)}
@@ -252,7 +257,7 @@ const PillarPage: React.FC<PillarPageProps> = ({ pillar, onBack, onNavigate }) =
               </span>
             </div>
             <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-safety group-hover:border-safety transition-all duration-700">
-              <ArrowRight size={32} className="text-white md:w-10 md:h-10" />
+              <ArrowRight size={32} className="text-white group-hover:text-white md:w-10 md:h-10" />
             </div>
           </button>
         </div>

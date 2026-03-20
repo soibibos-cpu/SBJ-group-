@@ -28,7 +28,7 @@ const SecurityHub: React.FC = () => {
             </span>
             <button 
               onClick={() => setNightOps(!nightOps)}
-              className={`flex items-center gap-3 px-6 py-3 text-xs font-black transition-all rounded-full ${nightOps ? 'bg-green-600 text-black shadow-[0_0_20px_rgba(34,197,94,0.3)]' : 'bg-zinc-800 text-white hover:bg-zinc-700'}`}
+              className={`flex items-center gap-3 px-6 py-3 text-xs font-black transition-all rounded-full ${nightOps ? 'bg-green-600 text-black shadow-[0_0_20px_rgba(34,197,94,0.3)]' : 'bg-white/10 text-white hover:bg-white/20'}`}
             >
               <Power className="w-4 h-4" />
               {nightOps ? 'TERMINATE NIGHT OPS' : 'INITIATE NIGHT OPS'}

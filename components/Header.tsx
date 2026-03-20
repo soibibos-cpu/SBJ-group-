@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, ArrowRight, Home, LayoutDashboard, Globe, Shield, Zap } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Home, LayoutDashboard, Globe, Shield, Zap, Sun, Moon } from 'lucide-react';
 import { PILLARS, OpuamakubaPattern, BRAND_CONFIG, SBJLogo } from '../constants.tsx';
 
 interface HeaderProps {
@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
           <nav className="hidden lg:flex items-center gap-8">
             <button 
               onClick={() => handleNavClick('home-top')}
-              className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-white hover:text-safety transition-colors flex items-center gap-2"
+              className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors flex items-center gap-2"
             >
               <Home size={12} className="opacity-40 group-hover:opacity-100" />
               Home
@@ -97,39 +97,39 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
             
             {/* Mega-Menu Trigger */}
             <div className="group relative">
-              <button className="flex items-center gap-2 text-[12px] font-black tracking-[0.3em] uppercase text-white hover:text-safety transition-all duration-300">
+              <button className="flex items-center gap-2 text-[12px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-all duration-300">
                 <Zap size={14} className="text-safety opacity-80 group-hover:opacity-100" />
                 OUR BUSINESS
                 <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-500 text-silt" />
               </button>
               
               <div className="absolute top-full right-1/2 translate-x-1/2 pt-6 w-[700px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                <div className="bg-navy border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden rounded-sm">
+                <div className="bg-white dark:bg-navy border border-slate-200 dark:border-white/10 shadow-2xl dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden rounded-sm">
                   <div className="grid grid-cols-2 p-6 gap-2">
                     {PILLARS.map((pillar) => (
                       <button
                         key={pillar.id}
                         onClick={() => handleNavClick(pillar.id)}
-                        className="flex items-start gap-4 p-4 hover:bg-white/5 text-left transition-all duration-300 group/item rounded-sm border border-transparent hover:border-white/10"
+                        className="flex items-start gap-4 p-4 hover:bg-slate-50 dark:hover:bg-white/5 text-left transition-all duration-300 group/item rounded-sm border border-transparent hover:border-slate-200 dark:hover:border-white/10"
                       >
-                        <div className="mt-1 w-10 h-10 flex items-center justify-center bg-white/5 text-silt group-hover/item:text-safety group-hover/item:scale-110 transition-all duration-500 border border-white/5">
+                        <div className="mt-1 w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-white/5 text-silt group-hover/item:text-safety group-hover/item:scale-110 transition-all duration-500 border border-slate-200 dark:border-white/5">
                           {/* Use any as type parameter for ReactElement to allow icon-specific props like size */}
                           {React.cloneElement(pillar.icon as React.ReactElement<any>, { size: 18 })}
                         </div>
                         <div>
-                          <span className="text-[10px] font-black tracking-widest uppercase text-white group-hover/item:text-safety block mb-1">
+                          <span className="text-[10px] font-black tracking-widest uppercase text-slate-900 dark:text-white group-hover/item:text-safety block mb-1">
                             {pillar.title.split(' & ')[0]}
                           </span>
-                          <p className="text-[9px] text-white/40 uppercase tracking-tighter line-clamp-1">
+                          <p className="text-[9px] text-slate-500 dark:text-white/40 uppercase tracking-tighter line-clamp-1">
                             {pillar.focus[0]} & Specialized Services
                           </p>
                         </div>
                       </button>
                     ))}
                   </div>
-                  <div className="bg-white/5 p-4 flex justify-between items-center border-t border-white/5">
-                    <span className="text-[8px] font-bold text-white/30 tracking-[0.3em] uppercase">Unified Industrial Excellence</span>
-                    <button onClick={() => handleNavClick('portfolio')} className="text-[9px] font-black text-silt hover:text-white transition-colors uppercase flex items-center gap-2">
+                  <div className="bg-slate-50 dark:bg-white/5 p-4 flex justify-between items-center border-t border-slate-200 dark:border-white/5">
+                    <span className="text-[8px] font-bold text-slate-400 dark:text-white/30 tracking-[0.3em] uppercase">Unified Industrial Excellence</span>
+                    <button onClick={() => handleNavClick('portfolio')} className="text-[9px] font-black text-silt hover:text-safety transition-colors uppercase flex items-center gap-2">
                       Full Portfolio <ArrowRight size={12} />
                     </button>
                   </div>
@@ -139,7 +139,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
 
             <button 
               onClick={() => handleNavClick('portfolio')}
-              className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-white hover:text-safety transition-colors"
+              className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors"
             >
               Portfolio
               <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-safety transition-all duration-500 group-hover:w-full"></span>
@@ -147,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onNavigate }) => {
 
             <button 
               onClick={() => handleNavClick('#contact-section')}
-              className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-white hover:text-safety transition-colors"
+              className="group relative text-[10px] font-black tracking-[0.3em] uppercase text-slate-900 dark:text-white hover:text-safety transition-colors"
             >
               CONTACT
               <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-safety transition-all duration-500 group-hover:w-full"></span>

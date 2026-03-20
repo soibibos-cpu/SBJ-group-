@@ -17,7 +17,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ pillar, index, onClick }) => {
       className={`group relative overflow-hidden bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] cursor-pointer reveal-on-scroll stagger-${(index % 4) + 1} hover:bg-white/[0.07] hover:border-white/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] flex flex-col h-full min-h-[340px] md:min-h-[420px]`}
     >
       {/* Glass Reflection Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.1] dark:from-white/[0.05] to-transparent pointer-events-none z-10"></div>
       
       {/* Background Icon Element */}
       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-700 group-hover:scale-110 pointer-events-none text-white">
@@ -39,7 +39,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ pillar, index, onClick }) => {
       <div className="relative z-10 h-full p-6 md:p-10 flex flex-col justify-end">
         <div className="transition-all duration-700 transform translate-y-2 group-hover:translate-y-0">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-white/10 backdrop-blur-md text-white border border-white/10 shadow-xl flex items-center justify-center transform group-hover:rotate-6 group-hover:bg-safety group-hover:border-safety/50 group-hover:shadow-[0_0_20px_rgba(255,87,34,0.4)] transition-all duration-500 rounded-xl">
+            <div className="p-3 bg-white/10 backdrop-blur-md text-white border border-white/10 shadow-xl flex items-center justify-center transform group-hover:rotate-6 group-hover:bg-safety group-hover:text-white group-hover:border-safety/50 group-hover:shadow-[0_0_20px_rgba(255,87,34,0.4)] transition-all duration-500 rounded-xl">
               {React.cloneElement(pillar.icon as React.ReactElement<any>, { size: 20 })}
             </div>
           </div>
@@ -83,7 +83,7 @@ interface BentoGridProps {
 
 const BentoGrid: React.FC<BentoGridProps> = ({ onPillarClick }) => {
   return (
-    <section className="py-32 md:py-40 bg-navy relative overflow-hidden" id="pillars">
+    <section className="py-32 md:py-40 bg-navy relative overflow-hidden transition-colors duration-500" id="pillars">
       {/* Background imagery with consistent industrial overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -94,7 +94,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onPillarClick }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy"></div>
       </div>
 
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none grayscale z-0">
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none grayscale z-0">
         <OpuamakubaPattern />
       </div>
       
@@ -126,8 +126,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ onPillarClick }) => {
              <div className="w-16 h-16 rounded-full bg-safety/20 flex items-center justify-center text-safety mb-6 group-hover:scale-110 transition-transform">
                <Plus size={32} />
              </div>
-             <h3 className="text-white font-display font-black text-xl uppercase mb-3">Group Synergy</h3>
-             <p className="text-white/40 text-[10px] uppercase tracking-widest leading-relaxed">Cross-sector integration fueling Nigeria's future</p>
+             <h3 className="text-white font-display font-black text-xl uppercase mb-3 text-center">Group Synergy</h3>
+             <p className="text-white/40 text-[10px] uppercase tracking-widest leading-relaxed text-center">Cross-sector integration fueling Nigeria's future</p>
           </div>
         </div>
 

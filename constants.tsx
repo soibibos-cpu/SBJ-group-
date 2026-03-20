@@ -25,7 +25,17 @@ export const BRAND_CONFIG = {
 
 export const SBJLogo: React.FC<{ className?: string }> = ({ className }) => (
   <div className={`flex items-center gap-3 select-none ${className}`}>
-    <div className="w-2 md:w-3 h-8 md:h-10 bg-safety flex-shrink-0"></div>
+    <img 
+      src="https://i.imgur.com/SPlUPCE.jpeg" 
+      alt="SBJ Group Logo" 
+      className="h-10 md:h-12 w-auto object-contain rounded-lg"
+      referrerPolicy="no-referrer"
+      onError={(e) => {
+        // Fallback to CSS logo if image fails
+        e.currentTarget.style.display = 'none';
+        e.currentTarget.parentElement?.classList.add('flex');
+      }}
+    />
     <div className="flex flex-col leading-[0.85]">
       <span className="font-display font-black text-white text-xl md:text-2xl tracking-tighter uppercase">
         SBJ GROUP
@@ -54,11 +64,9 @@ export const PILLARS: PillarData[] = [
     description: "Specialized in upstream oil and gas services, field maintenance, and energy infrastructure development across the Niger Delta.",
     focus: ["Upstream Operations", "Field Maintenance", "Energy Infrastructure"],
     subsidiaries: [
-      { name: "SBJ Upstream", division: "Oil and Gas Operations" },
-      { name: "SBJ Energy", division: "Oil and Gas Division" },
-      { name: "SBJ Construction", division: "Oil and Gas Services" },
-      { name: "Bojack Marine Offshore and Onshore", division: "Oil and Gas Technical" },
-      { name: "Lords Wonders Oceanic", division: "Oil and Gas Logistics" }
+      { name: "SBJ Upstream Limited", division: "Oil and Gas Operations", logo: "https://i.imgur.com/12gBA90.jpeg" },
+      { name: "Bojack Marine", division: "Oil and Gas Technical", logo: "https://i.imgur.com/cxlCaGQ.jpeg" },
+      { name: "Lords Wonders Oceanic", division: "Oil and Gas Logistics", logo: "https://i.imgur.com/SPlUPCE.jpeg" }
     ],
     icon: <Droplet size={24} />,
     gridSpan: "md:col-span-2 md:row-span-2",
@@ -70,11 +78,9 @@ export const PILLARS: PillarData[] = [
     description: "Comprehensive port services, shipping logistics, and offshore support for major industrial operators in the Gulf of Guinea.",
     focus: ["Port Services", "Offshore Support", "Shipping Logistics"],
     subsidiaries: [
-      { name: "Bojack Marine Offshore and Onshore", division: "Maritime Services" },
-      { name: "SBJ Upstream", division: "Maritime Division" },
-      { name: "SBJ Energy", division: "Maritime Support" },
-      { name: "SBJ Construction", division: "Maritime & Port Services" },
-      { name: "Lords Wonders Oceanic", division: "Maritime Logistics" }
+      { name: "Bojack Marine", division: "Maritime Services", logo: "https://i.imgur.com/cxlCaGQ.jpeg" },
+      { name: "SBJ Upstream Limited", division: "Maritime Division", logo: "https://i.imgur.com/12gBA90.jpeg" },
+      { name: "Lords Wonders Oceanic", division: "Maritime Logistics", logo: "https://i.imgur.com/SPlUPCE.jpeg" }
     ],
     icon: <Anchor size={24} />,
     gridSpan: "md:col-span-2",
@@ -86,9 +92,8 @@ export const PILLARS: PillarData[] = [
     description: "Cutting-edge surveillance, tactical infrastructure protection, and intelligence-led safety solutions for critical national assets.",
     focus: ["Critical Infrastructure Protection", "Intelligence Gathering", "Tactical Security"],
     subsidiaries: [
-      { name: "Kalabari Territorial Guards", division: "Surveillance Ops" },
-      { name: "Cawthorne Channel Surveillance", division: "Monitoring Services" },
-      { name: "Cawthorne Channel Security Services", division: "Tactical Security" }
+      { name: "Kalabari Territorial Guards", division: "Surveillance Ops", logo: "https://i.imgur.com/fGjOy5v.png" },
+      { name: "Cawthorne Channel Security Surveillance Limited", division: "Monitoring & Tactical Security", logo: "https://i.imgur.com/BVKtQRx.jpeg" }
     ],
     icon: <ShieldAlert size={24} />,
     gridSpan: "md:col-span-1",
@@ -100,11 +105,9 @@ export const PILLARS: PillarData[] = [
     description: "Precision civil engineering, structural fabrication, and large-scale industrial construction projects.",
     focus: ["Structural Fabrication", "Industrial Construction", "Civil Works"],
     subsidiaries: [
-      { name: "SBJ Construction", division: "Fabrication & Mechanical" },
-      { name: "SBJ Upstream", division: "Engineering & Construction" },
-      { name: "SBJ Energy", division: "Civil Construction" },
-      { name: "Bojack Marine Offshore and Onshore", division: "Mechanical Services" },
-      { name: "Lords Wonders Oceanic", division: "Construction Support" }
+      { name: "SBJ Upstream Limited", division: "Engineering & Construction", logo: "https://i.imgur.com/12gBA90.jpeg" },
+      { name: "Bojack Marine", division: "Mechanical Services", logo: "https://i.imgur.com/cxlCaGQ.jpeg" },
+      { name: "Lords Wonders Oceanic", division: "Construction Support", logo: "https://i.imgur.com/SPlUPCE.jpeg" }
     ],
     icon: <Construction size={24} />,
     gridSpan: "md:col-span-1",
@@ -116,9 +119,7 @@ export const PILLARS: PillarData[] = [
     description: "Heavy-duty transportation, haulage networks, and integrated supply chain management across West Africa.",
     focus: ["Heavy Haulage", "Supply Chain Management", "Regional Transport"],
     subsidiaries: [
-      { name: "Lords Wonders Oceanic", division: "Logistics Services" },
-      { name: "SBJ Energy", division: "Logistics Division" },
-      { name: "SBJ Construction", division: "Transportation & Haulage" }
+      { name: "Lords Wonders Oceanic", division: "Logistics Services", logo: "https://i.imgur.com/SPlUPCE.jpeg" }
     ],
     icon: <Truck size={24} />,
     gridSpan: "md:col-span-1",
@@ -130,10 +131,9 @@ export const PILLARS: PillarData[] = [
     description: "Global sourcing and industrial procurement services, ensuring the seamless acquisition of high-spec machinery and parts.",
     focus: ["Global Sourcing", "Industrial Supplies", "Strategic Procurement"],
     subsidiaries: [
-      { name: "SBJ Construction", division: "General Procurement" },
-      { name: "SBJ Upstream", division: "Industrial Procurement" },
-      { name: "Cawthorne Channel Security", division: "Export and Import" },
-      { name: "Lords Wonders Oceanic", division: "General Trading" }
+      { name: "SBJ Upstream Limited", division: "Industrial Procurement", logo: "https://i.imgur.com/12gBA90.jpeg" },
+      { name: "Cawthorne Channel Security Surveillance Limited", division: "Export and Import", logo: "https://i.imgur.com/BVKtQRx.jpeg" },
+      { name: "Lords Wonders Oceanic", division: "General Trading", logo: "https://i.imgur.com/SPlUPCE.jpeg" }
     ],
     icon: <ShoppingCart size={24} />,
     gridSpan: "md:col-span-1",
@@ -145,10 +145,8 @@ export const PILLARS: PillarData[] = [
     description: "Strategic investments and specialized industrial services providing integrated support to diverse economic sectors.",
     focus: ["Strategic Investments", "Technical Support", "Industrial Consultancy"],
     subsidiaries: [
-      { name: "SBJ Construction", division: "Agro-Allied & Real Estate" },
-      { name: "Bojack Marine Offshore and Onshore", division: "Waste & Retail Ops" },
-      { name: "SBJ Construction", division: "Printing & Media" },
-      { name: "Lords Wonders Oceanic", division: "Communication Services" }
+      { name: "Bojack Marine", division: "Waste & Retail Ops", logo: "https://i.imgur.com/cxlCaGQ.jpeg" },
+      { name: "Lords Wonders Oceanic", division: "Communication Services", logo: "https://i.imgur.com/SPlUPCE.jpeg" }
     ],
     icon: <Hexagon size={24} />,
     gridSpan: "md:col-span-1",
@@ -183,4 +181,13 @@ export const PARTNERS: Partner[] = [
   { name: "NPA", logo: "https://nigerianports.gov.ng/wp-content/uploads/2021/05/NPA-LOGO-NEW.png", type: "Maritime Regulator" },
   { name: "NNPC", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/NNPC_Limited_logo.svg/1200px-NNPC_Limited_logo.svg.png", type: "National Oil Co." },
   { name: "TotalEnergies", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Logo_TotalEnergies.svg/1200px-Logo_TotalEnergies.svg.png", type: "Strategic Partner" }
+];
+
+export const SUBSIDIARIES: Subsidiary[] = [
+  { name: "Kalabari Territorial Guards", division: "Security & Surveillance", logo: "https://i.imgur.com/fGjOy5v.png" },
+  { name: "SBJ Upstream Limited", division: "Oil & Gas Operations", logo: "https://i.imgur.com/12gBA90.jpeg" },
+  { name: "Bojack Marine", division: "Maritime & Offshore", logo: "https://i.imgur.com/cxlCaGQ.jpeg" },
+  { name: "Cawthorne Channel Security Surveillance Limited", division: "Asset Protection", logo: "https://i.imgur.com/BVKtQRx.jpeg" },
+  { name: "Lords Wonders Oceanic", division: "Logistics & Trading", logo: "https://i.imgur.com/SPlUPCE.jpeg" },
+  { name: "SBJ Business Solutions Limited", division: "Business Consulting", logo: "https://i.imgur.com/LA2gsAt.jpeg" }
 ];

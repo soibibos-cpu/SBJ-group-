@@ -44,7 +44,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact-section" className="relative py-32 bg-navy overflow-hidden scroll-mt-24">
+    <section id="contact-section" className="relative py-32 bg-navy overflow-hidden scroll-mt-24 transition-colors duration-500">
       <div className="absolute inset-0 oil-texture opacity-30"></div>
       <div className="absolute top-0 left-0 right-0 opacity-20">
         <OpuamakubaPattern />
